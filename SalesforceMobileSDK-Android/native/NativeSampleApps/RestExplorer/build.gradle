@@ -1,0 +1,66 @@
+apply plugin: 'com.android.application'
+
+dependencies {
+  api project(':libs:SalesforceSDK')
+  androidTestImplementation ('androidx.test:runner:1.2.0') {
+    exclude module: 'support-annotations'
+  }
+  androidTestImplementation ('androidx.test:rules:1.2.0') {
+    exclude module: 'support-annotations'
+  }
+  androidTestImplementation ('androidx.test.espresso:espresso-core:3.2.0') {
+    exclude module: 'support-annotations'
+  }
+  androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+}
+
+android {
+  compileSdkVersion 29
+
+  defaultConfig {
+    targetSdkVersion 29
+    minSdkVersion 23
+  }
+  
+  buildTypes {
+      debug {
+         testCoverageEnabled = true
+      }
+   }
+
+  sourceSets {
+
+    main {
+      manifest.srcFile 'AndroidManifest.xml'
+      java.srcDirs = ['src']
+      resources.srcDirs = ['src']
+      aidl.srcDirs = ['src']
+      renderscript.srcDirs = ['src']
+      res.srcDirs = ['res']
+      assets.srcDirs = ['assets']
+    }
+
+    androidTest.setRoot('../test/RestExplorerTest')
+    androidTest {
+      java.srcDirs = ['../test/RestExplorerTest/src']
+      resources.srcDirs = ['../test/RestExplorerTest/src']
+      res.srcDirs = ['../test/RestExplorerTest/res']
+    }
+  }
+  defaultConfig {
+    testApplicationId "com.salesforce.samples.restexplorer.tests"
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+  }
+  packagingOptions {
+    exclude 'META-INF/LICENSE'
+    exclude 'META-INF/LICENSE.txt'
+    exclude 'META-INF/DEPENDENCIES'
+    exclude 'META-INF/NOTICE'
+    pickFirst 'protobuf.meta'
+  }
+
+  lintOptions {
+    xmlReport true
+    abortOnError false
+  }
+}

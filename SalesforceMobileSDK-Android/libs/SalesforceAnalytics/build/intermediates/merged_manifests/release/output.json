@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "applicationId": "com.salesforce.androidsdk.analytics",
+  "variantType": "LIBRARY",
+  "elements": [
+    {
+      "outputType": {
+        "type": "MERGED_MANIFESTS"
+      },
+      "apkData": {
+        "type": "MAIN",
+        "splits": [],
+        "versionCode": 69,
+        "versionName": "8.2.0",
+        "outputFile": "SalesforceAnalytics-release.aar",
+        "fullName": "release",
+        "baseName": "release",
+        "dirName": ""
+      },
+      "path": "../../library_manifest/release/AndroidManifest.xml",
+      "properties": {
+        "packageId": "com.salesforce.androidsdk.analytics",
+        "split": ""
+      }
+    }
+  ]
+}
